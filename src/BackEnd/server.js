@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-const mongoDB = 'mongodb+srv://admin:admin@ngcluster-ad0h4.mongodb.net/test?retryWrites=true&w=majority';
+const mongoDB = 'mongodb+srv://admin:admin@ngcluster-ad0h4.mongodb.net/G00354922?retryWrites=true&w=majority';
 mongoose.connect(mongoDB,{useNewUrlParser:true});
 
 app.use(cors());
@@ -60,7 +60,7 @@ app.get('/test', (req, res) => {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
 
-app.post('/api/DataRepAssignment', (req,res) =>{
+app.post('/api/moviestars', (req,res) =>{
     console.log(req.body);
     console.log(req.body.name);
     console.log(req.body.age);
@@ -77,17 +77,17 @@ app.post('/api/DataRepAssignment', (req,res) =>{
     res.json('Data Uploaded');
 })
 
-app.delete('/api/DataRepAssignment/:id', (req, res)=>{
+app.delete('/api/moviestars/:id', (req, res)=>{
     console.log(req.params.id)
 //  pass http dequest, delete method, deletes from api
-    MovieModel.deleteOne({_id: req.params.id}, (error,data)=>{
+    MovieStarModel.deleteOne({_id: req.params.id}, (error,data)=>{
         if(error)
             res.json(error);
         res.json(data);
     })
 })
 
-app.put('/api/DataRepAssignment/:id', (req,res)=>{
+app.put('/api/moviestars/:id', (req,res)=>{
     console.log('Edit: '+req.params.id);
     console.log(req.body);
     MovieStarModel.findByIdAndUpdate(req.params.id, 
@@ -99,7 +99,7 @@ app.put('/api/DataRepAssignment/:id', (req,res)=>{
         )
 })
 
-app.get('/api/DataRepAssignment/:id', (req, res) => {
+app.get('/api/moviestars/:id', (req, res) => {
     console.log(req.params.id);
 
     MovieStarModel.findById(req.params.id, (error, data) =>{
@@ -107,14 +107,14 @@ app.get('/api/DataRepAssignment/:id', (req, res) => {
     });
 });
 
-app.get('/api/DataRepAssignment/:id', (req,res)=>{
+app.get('/api/moviestars/:id', (req,res)=>{
     console.log('GET: req.params.id');
     MovieStarModel.findById(req.params.id, (error, data)=>{
         res.json(data);
     })
 })
 
-app.get('/api/DataRepAssignment', (req, res) => {
+app.get('/api/moviestars', (req, res) => {
 
     MovieStarModel.find((error, data)=>{
         res.json({movieStars:data});

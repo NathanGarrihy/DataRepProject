@@ -14,7 +14,7 @@ class MovieStarItem extends React.Component{
     deleteMovieStar(e) {
         console.log("Delete button clicked");
 
-        axios.delete('http://localhost:4000/api/movieStars/'+ this.props.movieStar._id)
+        axios.delete('http://localhost:4000/api/moviestars/'+ this.props.movieStar._id)
         .then()
         .catch();
     }
@@ -27,18 +27,18 @@ class MovieStarItem extends React.Component{
                 <p>{this.props.movieStar.Sample}</p>
                 <img src={this.props.movieStar.Image}></img> */}
             <Card border="dark" style={{width: '30rem'}}>
-                <Card.Header>{this.props.movieStar.Name}</Card.Header>
+                <Card.Header>{this.props.movieStar.name}</Card.Header>
                 <Card.Body>
                     <blockquote className="blackquote mb-10">
-                    <img src={this.props.movieStar.Image}></img>
+                    <img width="400" height="400" src={this.props.movieStar.image}></img>
                     <footer>
-                    {this.props.movieStar.Age}
+                    age: {this.props.movieStar.age}
                     </footer>
                     </blockquote>
-                    <p>{this.props.movieStar.Sample}</p>
+                    <p>known for: {this.props.movieStar.sample}</p>
                 </Card.Body>
-                <Button variant="danger" onClick={this.deleteMovie} >Delete</Button>
-  <Link to={"/edit/"+this.props.movie._id} className="btn btn-primary">Edit</Link> 
+                <Button variant="danger" onClick={this.deleteMovieStar} >Delete</Button>
+                <Link to={"/edit/"+this.props.movieStar._id} className="btn btn-primary">Edit</Link> 
             </Card>
             </div>
         )

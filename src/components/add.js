@@ -46,7 +46,7 @@ handleSubmit(e){
      image: this.state.Image
    }
 
-   axios.post('http://localhost:4000/api/DataRepAssignment/', movieStarObject)
+   axios.post('http://localhost:4000/api/moviestars/', movieStarObject)
    .then()
    .catch();
 
