@@ -2,10 +2,12 @@
 .App {
   text-align: center;
   background-image: url("./curtains.jpg");
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .AppAlt {
   text-align: center;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background-image: url("./cinemaBackground.jpg");
   color: white;
 }

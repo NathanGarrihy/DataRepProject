@@ -12,8 +12,6 @@ class MovieStarItem extends React.Component{
     }
 
     deleteMovieStar(e) {
-        //console.log("Delete button clicked");
-
         axios.delete('http://localhost:4000/api/moviestars/'+ this.props.movieStar._id)
         .then( alert("Movie star has been deleted, please refresh the page to complete."))
         .catch();
@@ -22,8 +20,8 @@ class MovieStarItem extends React.Component{
 
     render(){
         return(
-                <div>   
-                <Card bg="dark" border="primary" style={{width: '50rem'}}>
+            <div>   
+            <Card bg="dark" border="primary" style={{width: '50rem'}}>
                 <a  className="App" href= {this.props.movieStar.imdb}>
                 <Card.Header>{this.props.movieStar.name}</Card.Header>
                 <Card.Body>
@@ -36,6 +34,7 @@ class MovieStarItem extends React.Component{
                     <p>known for: {this.props.movieStar.sample}</p>
                 </Card.Body>
                 </a>
+
                 <Link className="ButtonLink" to={"/edit/"+this.props.movieStar._id} className="btn btn-primary">Edit</Link> 
                 <Button variant="outline-danger" onClick={this.deleteMovieStar}>Delete</Button>
             </Card>

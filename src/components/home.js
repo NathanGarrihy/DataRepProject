@@ -13,6 +13,7 @@ class Home extends React.Component {
         <Card bg="dark">
           <Card-Item>
         <Carousel>
+          
   <Carousel.Item>
     <a href="https://oscar.go.com/">
     <img
@@ -24,6 +25,7 @@ class Home extends React.Component {
       <h3>Oscar trophy</h3>
     </Carousel.Caption>
   </Carousel.Item>
+
   <Carousel.Item>
   <a href="https://www.imdb.com/title/tt0119217/">
     <img
@@ -35,6 +37,7 @@ class Home extends React.Component {
       <h3>Ben Affleck and Matt Damon in Good Will Hunting</h3>
     </Carousel.Caption>
   </Carousel.Item>
+  
   <Carousel.Item>
   <a href="https://www.imdb.com/name/nm0000375/">
     <img
@@ -46,6 +49,7 @@ class Home extends React.Component {
       <h3>Robert Downey Jr. at the MTV Movie Awards</h3>
     </Carousel.Caption>
   </Carousel.Item>
+  
   <Carousel.Item>
   <a href="https://www.imdb.com/name/nm0000113/">
     <img
@@ -57,6 +61,7 @@ class Home extends React.Component {
       <h3>Sandra Bullock in Birdbox</h3>
     </Carousel.Caption>
   </Carousel.Item>
+
   <Carousel.Item>
   <a href="https://www.imdb.com/name/nm0001191/">
     <img
@@ -68,6 +73,7 @@ class Home extends React.Component {
       <h3>Adam Sandler in Happy Gilmore</h3>
     </Carousel.Caption>
   </Carousel.Item>
+
   <Carousel.Item>
   <a href="https://www.imdb.com/name/nm0001618/">
     <img
@@ -82,6 +88,7 @@ class Home extends React.Component {
 </Carousel>
 </Card-Item>
 </Card>
+
 <br></br>
         <h2>Time is {new Date().toLocaleTimeString()}.</h2>
         <h2>Date is {new Date().toLocaleDateString()}.</h2>
