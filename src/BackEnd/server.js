@@ -31,7 +31,8 @@ const movieStarSchema = new Schema({
     name:String,
     age:String,
     sample:String,
-    image:String
+    image:String,
+    imdb:String
 });
 
 const MovieStarModel = mongoose.model('movieStars', movieStarSchema);
@@ -66,12 +67,14 @@ app.post('/api/moviestars', (req,res) =>{
     console.log(req.body.age);
     console.log(req.body.sample);
     console.log(req.body.image);
+    console.log(req.body.imdb);
 
     MovieStarModel.create ({
         name: req.body.name,
         age: req.body.age,
         sample: req.body.sample,
-        image: req.body.image
+        image: req.body.image,
+        imdb: req.body.imdb
     });
 
     res.json('Data Uploaded');
@@ -79,7 +82,7 @@ app.post('/api/moviestars', (req,res) =>{
 
 app.delete('/api/moviestars/:id', (req, res)=>{
     console.log(req.params.id)
-//  pass http dequest, delete method, deletes from api
+//  passes http request, delete method and deletes from api
     MovieStarModel.deleteOne({_id: req.params.id}, (error,data)=>{
         if(error)
             res.json(error);
@@ -92,7 +95,8 @@ app.put('/api/moviestars/:id', (req,res)=>{
     console.log(req.body);
     MovieStarModel.findByIdAndUpdate(req.params.id, 
         req.body, 
-        {new:true}, //configuration
+        //  Configuration
+        {new:true}, 
         (error,data)=>{
             res.json(data);
         }
@@ -119,25 +123,6 @@ app.get('/api/moviestars', (req, res) => {
     MovieStarModel.find((error, data)=>{
         res.json({movieStars:data});
     });
-
-    // const myMovieStars = [
-    //     {
-    //         "Title": "Avengers: Infinity War",
-    //         "Year": "2018",
-    //         "Poster": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_SX300.jpg"
-    //     },
-    //     {
-    //         "Title": "Captain America: Civil War",
-    //         "Year": "2016",
-    //         "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ0MTgyNjAxMV5BMl5BanBnXkFtZTgwNjUzMDkyODE@._V1_SX300.jpg"
-    //     }
-    // ];
-
-    // res.status(200).json(
-    //     {
-    //         movieStars: myMovieStars,
-    //         message: 'Data Sent'
-    //     });
 })
 
 app.get('/hello/:name', (req, res) => {

@@ -10,12 +10,15 @@ constructor(props){
   this.state = { Name:'',
                   Age:'',
                   Sample:'',
-                  Image:''};
+                  Image:'',
+                  Imdb:''};
+
   this.handleSubmit = this.handleSubmit.bind(this);
   this.handleMovieStarNameChange = this.handleMovieStarNameChange.bind(this);
   this.handleMovieStarAgeChange = this.handleMovieStarAgeChange.bind(this);
   this.handleMovieStarSampleChange = this.handleMovieStarSampleChange.bind(this);
   this.handleMovieStarImageChange = this.handleMovieStarImageChange.bind(this);
+  this.handleMovieStarImdbChange = this.handleMovieStarImdbChange.bind(this);
 }
 
 handleMovieStarNameChange(e){
@@ -34,16 +37,19 @@ handleMovieStarImageChange(e){
   this.setState({Image: e.target.value});
 }
 
+handleMovieStarImdbChange(e){
+  this.setState({Imdb: e.target.value});
+}
+
 handleSubmit(e){
-  // DEBUG alert(this.state.Title+ "      " + this.state.Year 
-   // +"       "+ this.state.Poster);
    e.preventDefault();
 
    const movieStarObject = {
      name: this.state.Name,
      age: this.state.Age,
      sample: this.state.Sample,
-     image: this.state.Image
+     image: this.state.Image,
+     imdb: this.state.Imdb
    }
 
    axios.post('http://localhost:4000/api/moviestars/', movieStarObject)
@@ -53,49 +59,61 @@ handleSubmit(e){
    this.setState({Name:'',
                   Age: '',
                   Sample:'',
-                  Image:'' });
+                  Image:'',
+                  Imdb: ''});
+
+    alert(movieStarObject.name + ' has been added to the list of Movie Stars!');
 }
 
   render() {
     return (
-      <div>
-        <h1>Hello World from add</h1>
+      <div className="form-group">
+        <img width="150" src="http://knttraining.co.uk/wp-content/uploads/2018/11/how-to-add-a-png-to-a-photo.png" alt="Unable to load"/>
         <form onSubmit={this.handleSubmit}>
+        <label>Movie Star Name</label>
         <div className='form-group'>
-          <label>Movie Star Name</label>
           <input
           type='text'
-          className='form-control'
+          className='App-form'
           value={this.state.Name}
-          onChange={this.handleMovieStarNameChange}
-          ></input>
+          onChange={this.handleMovieStarNameChange}>
+          </input>
         </div>
+        <label>Movie Star Age</label>
         <div className='form-group'>
-          <label>Movie Star Age</label>
           <input
           type='text'
-          className='form-control'
+          className='App-form'
           value={this.state.Age}
-          onChange={this.handleMovieStarAgeChange}
-          ></input>
+          onChange={this.handleMovieStarAgeChange}>
+          </input>
         </div>
+        <label>Name of movie(s) star has appeared in</label>
         <div className='form-group'>
-          <label>Name of movie star has appeared in</label>
           <input
           type='text'
-          className='form-control'
+          className='App-form'
           value={this.state.Sample}
-          onChange={this.handleMovieStarSampleChange}
-          ></input>
+          onChange={this.handleMovieStarSampleChange}>
+          </input>
         </div>
+        <label>Picture of Movie Star</label>
         <div className='form-group'>
-          <label>Picture of Movie Star</label>
           <textarea
           row='3'
-          className='form-control'
+          className='App-form'
           value={this.state.Image}
-          onChange={this.handleMovieStarImageChange}
-          ></textarea>
+          onChange={this.handleMovieStarImageChange}>
+          </textarea>
+        </div>
+        <label>IMDB page (if exists)</label>
+        <div className='form-group'>
+          <input
+          type='text'
+          className='App-form'
+          value={this.state.Imdb}
+          onChange={this.handleMovieStarImdbChange}>
+          </input>
         </div>
         <div>
           <input
@@ -104,6 +122,9 @@ handleSubmit(e){
           </input>
         </div>
         </form>
+        <br></br><br></br><br></br><br></br>
+        <p>© UCMS(Ultimate collection of movie stars)</p>
+        <br></br>
       </div>
     );
   }

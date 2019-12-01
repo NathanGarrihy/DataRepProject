@@ -1,5 +1,30 @@
+/*  Adds background images + aligns text to center */
 .App {
   text-align: center;
+  background-image: url("./curtains.jpg");
+}
+
+.AppAlt {
+  text-align: center;
+  background-image: url("./cinemaBackground.jpg");
+  color: white;
+}
+
+/* Sets links to white for visual improvement */
+a:link {
+  color: white;
+}
+
+a:active {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+h3 {
+  color: yellow;
 }
 
 .App-logo {
@@ -7,7 +32,6 @@
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,6 +39,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-form {
+  color: black;
+  display: table-cell;
+  text-align: center;
+  width: 50%;
 }
 
 .App-link {

@@ -9,13 +9,15 @@ class Edit extends React.Component {
     this.state = {Name:'',
                   Age:'',
                   Sample:'',
-                  Image:''};
+                  Image:'',
+                  Imdb:''};
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleMovieStarNameChange = this.handleMovieStarNameChange.bind(this);
     this.handleMovieStarAgeChange = this.handleMovieStarAgeChange.bind(this);
     this.handleMovieStarSampleChange = this.handleMovieStarSampleChange.bind(this);
     this.handleMovieStarImageChange = this.handleMovieStarImageChange.bind(this);
+    this.handleMovieStarImdbChange = this.handleMovieStarImdbChange.bind(this);
   }
 
   handleMovieStarNameChange(e){
@@ -30,20 +32,23 @@ class Edit extends React.Component {
     this.setState({Sample: e.target.value});
   }
   
+  handleMovieStarImdbChange(e){
+    this.setState({Imdb: e.target.value});
+  }
+  
   handleMovieStarImageChange(e){
     this.setState({Image: e.target.value});
   }
 
   handleSubmit(e){
-    // DEBUG alert(this.state.Title+ "      " + this.state.Year 
-     // +"       "+ this.state.Poster);
      e.preventDefault();
   
      const movieStarObject = {
        name: this.state.Name,
        age: this.state.Age,
        sample: this.state.Sample,
-       image: this.state.Image
+       image: this.state.Image,
+       imdb: this.state.Imdb
      }
   
      axios.put('http://localhost:4000/api/moviestars/'+ this.state._id, 
@@ -54,7 +59,11 @@ class Edit extends React.Component {
      this.setState({Name:'',
                   Age: '',
                   Sample:'',
-                  Image:'' });
+                  Image:'',
+                  Imdb:'' });
+
+
+      alert("Movie star has been edited, please refresh the page to complete.");
   }
   
   componentDidMount(){
@@ -66,7 +75,8 @@ class Edit extends React.Component {
             Name: response.data.name,
             Age: response.data.age,
             Sample: response.data.sample,
-            Image: response.data.image
+            Image: response.data.image,
+            Imdb: response.data.imdb
         })
     })
     .catch();
@@ -76,40 +86,49 @@ class Edit extends React.Component {
   render() {
     return (
       <div>
-      <h1>Hello from Edit component</h1>
+      <img width="150" src="https://icon-library.net/images/icon-edit/icon-edit-1.jpg" alt="Unable to load"></img>
       <form onSubmit={this.handleSubmit}>
+      <label>Movie Star Name</label>
       <div className='form-group'>
-        <label>Movie Star Name</label>
         <input
         type='text'
-        className='form-control'
+        className='App-form'
         value={this.state.Name}
         onChange={this.handleMovieStarNameChange}
         ></input>
       </div>
+      <label>Movie Star Age</label>
       <div className='form-group'>
-        <label>Movie Star Age</label>
         <input
         type='text'
-        className='form-control'
+        className='App-form'
         value={this.state.Age}
         onChange={this.handleMovieStarAgeChange}
         ></input>
       </div>
+      <label>Name of movie(s) star has appeared in</label>
       <div className='form-group'>
-          <label>Name of movie star has appeared in</label>
           <input
           type='text'
-          className='form-control'
+          className='App-form'
           value={this.state.Sample}
           onChange={this.handleMovieStarSampleChange}
           ></input>
         </div>
+        <label>IMDB page (if exists)</label>
         <div className='form-group'>
-          <label>Picture of Movie Star</label>
+          <input
+          type='text'
+          className='App-form'
+          value={this.state.Imdb}
+          onChange={this.handleMovieStarImdbChange}
+          ></input>
+        </div>
+        <label>Picture of Movie Star</label>
+        <div className='form-group'>
           <textarea
           row='3'
-          className='form-control'
+          className='App-form'
           value={this.state.Image}
           onChange={this.handleMovieStarImageChange}
           ></textarea>
@@ -121,6 +140,9 @@ class Edit extends React.Component {
         </input>
       </div>
       </form>
+      <br></br><br></br><br></br><br></br>
+      <p>© UCMS(Ultimate collection of movie stars)</p>
+      <br></br>
     </div>
     );
   }

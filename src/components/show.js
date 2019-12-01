@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieStars from './movieStars';
 import axios from 'axios';
+import '../App.css';
 
 class Show extends React.Component {
 
@@ -20,8 +21,7 @@ class Show extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Hello from Show</h1>
+      <div className="AppAlt">
         <MovieStars myMovieStars= {this.state.movieStars}></MovieStars>
       </div>
     );
