@@ -1,3 +1,4 @@
+# More info about this project can be found in the [Wiki](https://github.com/NathanGarrihy/DataRepProject/wiki) section
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
